@@ -1,0 +1,175 @@
+
+header {
+    
+    opacity: 0.95;
+    background-color:#45a049;
+    background-size:100% 100%;
+    height:90px;
+    border-bottom-width: 2px;
+    border-bottom-color: #666666;
+    border-bottom-style: solid;
+ 
+}
+
+body{
+    background-color: #d6d6d6;
+    padding:0;
+    margin:0;
+}
+
+main{
+    
+   
+    margin:20px;
+    padding:20px;
+    height: 500px;
+  
+
+ }
+
+ div{
+
+    
+    
+    border-bottom: 2px;
+    border-bottom-color:grey;
+    border-bottom-style: solid;
+   
+   
+ }
+
+
+ p{
+     display: inline-block;
+     padding: 25px;
+     width: 200px;
+     text-align: center;
+   
+     margin:0px;
+   
+ }
+
+
+ .headText{
+    display: inline-block;
+    padding: 25px;
+    width: 200px;
+    
+    text-align: center;
+    font-weight: bold;
+    
+    
+  
+}
+
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    box-sizing: border-box ;
+}
+
+
+
+input[type=submit] {
+  
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 34px 0;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.add{
+
+    
+    border-bottom-width: 0px;
+    width:100px;
+}
+
+
+.edit:link, .edit:visited {
+    background-color: #ffc000;
+    color: black;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    
+    padding: 14px 20px;
+    margin: 4px 0;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+  }
+  
+  .edit:hover, .edit:active {
+      background-color: #ffd453;
+     padding: 14px 20px;
+      margin: 4px 0;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+  }
+  
+  .edit{
+   
+      padding-bottom: 30px;
+    
+      top: 200px;
+  }
+  
+  
+  
+.delete:link, .delete:visited {
+    background-color: #ff1818;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    
+    padding: 14px 20px;
+    margin: 4px 0;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+  }
+  
+  .delete:hover, .delete:active {
+      background-color: #ff5656;
+      padding: 14px 20px;
+      margin: 4px 0;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+  }
+  
+  .delete{
+   
+      padding-bottom: 30px;
+    
+      top: 200px;
+  }
+  
+
+.box{
+
+    width: 70px;
+    justify-content: center;
+    margin: 0;
+    padding:0;
+}
+
+
