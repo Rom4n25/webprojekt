@@ -18,12 +18,12 @@
                     <p id="textError">${loginNotSucces}</p>
                 </div>
 
-                <form action="/userPanel" method="post">
+                <form action="login" method="POST">
 
 
-                    <input type="text" id="username" name="login" placeholder="Type username..">
+                    <input type="text" id="username" name="username" placeholder="Type username..">
 
-                    <input type="password" id="pass" name="password" placeholder="Type password..">
+                    <input type="password" id="password" name="password" placeholder="Type password..">
 
                     <input type="submit" value="Login">
 
