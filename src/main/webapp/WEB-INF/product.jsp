@@ -10,27 +10,34 @@
 
     <body>
         <header id="header">
+            <div class="logout">
+                <form action="/logout" >
+                    <input name="logoutBtn" type="submit" value="Logout" >
+                </form>
+            </div>
         </header>
 
         <main id="main">
-           
+
             <div class="product">
                 <p class="productName">${product.name}</p>
-                <p class="productDescription">Manufacturer: ${product.manufacturer}</p>
+                <img src="<c:url
+                         value="/resources/images/${product.productId}.jpg"></c:url>"
+                         alt="image" style = "width:100%"/>
+                     <p class="productDescription">Manufacturer: ${product.manufacturer}</p>
                 <p class="productDescription">Category: ${product.category}</p>
                 <p class="productDescription">Price: ${product.unitPrice} PLN</p>
                 <p class="productDescription">Liczba sztuk w magazynie: ${product.unitsInStock}</p>
                 <p class="productDescription">${product.description}</p>
-                <p class="productDescription">${product.condition}</p>
                 <a  href=" <spring:url value="/shop/" /> " >
-                            Back
-                     </a>
-                
+                    Back
+                </a>
+
             </div>
-        
-            
-             
-            
+
+
+
+
         </main>
 
 

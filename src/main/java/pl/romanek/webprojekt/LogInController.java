@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -39,6 +40,29 @@ public class LogInController {
         return "userPanel";
     }
  
+    @GetMapping("/error")
+    public String fail(Model model){
+        Boolean flag = true;
+        model.addAttribute("flag",flag);
+       
+        return "index";
+    }
+    
+    //  @GetMapping("/logout")
+    //  public String logout(){
+       
+    //  return "index";
+   // }
+    
+    
+   // @RequestMapping("fail")
+  //  public String fail(Model model, @RequestParam("error") Boolean flag){
+        
+   //     model.addAttribute("flag",flag);
+        
+   //     return "index";
+   // }
+
     
    // ########################################################
     

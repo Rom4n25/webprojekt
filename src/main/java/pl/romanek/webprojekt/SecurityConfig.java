@@ -26,7 +26,15 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
                 .password("user")
                 .roles("USER")
                 .build();
-        return new InMemoryUserDetailsManager(userDetails);
+        
+        UserDetails adminDetails = User.withDefaultPasswordEncoder()
+                .username("admin")
+                .password("admin")
+                .roles("ADMIN")
+                .build();
+        
+        
+        return new InMemoryUserDetailsManager(userDetails,adminDetails);
     }
 
 
@@ -36,12 +44,19 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
         
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
-                .anyRequest().hasRole("USER")
+                .antMatchers("/shop/add").hasRole("ADMIN")
+                .anyRequest().hasAnyRole("USER","ADMIN")
                 .and()
                 .formLogin()
-                .loginProcessingUrl("/login")
+                .loginProcessingUrl("/login") //tutaj musi byc to samo co jest w index.jsp ---> action="login"
                 .loginPage("/").permitAll()
-                .defaultSuccessUrl("/userPanel");
+                .defaultSuccessUrl("/userPanel")
+                .failureUrl("/error")
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/");
+                
                 http.csrf().disable();
               
                

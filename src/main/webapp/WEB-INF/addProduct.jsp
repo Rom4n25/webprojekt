@@ -18,7 +18,7 @@
 
             <div class="product">
 
-                <form action="/shop/add" method="POST">
+                <form action="/shop/add" method="POST" enctype="multipart/form-data">
                     <label>Id</label>
                     <input type="text" name="productId" placeholder="Type id...">
 
@@ -38,18 +38,20 @@
                     <input type="text" name="category" placeholder="Type category...">
 
                     <label>Units In Stock</label>
-                    <input type="text" name="unitsInStock">
-
-                    <label>Units In ORder</label>
-                    <input type="text" name="unitsInOrder">
-
-                    <label>Discontinued</label>
-                    <input type="checkbox" name="discontinued">
+                    <input type="text" name="unitsInStock"><br>
 
                     <div> Condition
                         <input type="radio" value="New"/>Nowy
                         <input type="radio" value="Old"/>Używany
                         <input type="radio" value="Refurbished"/>Odnowiony
+                    </div>
+                    <br>
+                    <div>
+                        
+                        <label>Product Image</label>
+                        <input name="productImage" path="productImage" type="file"></input>
+                        
+                        
                     </div>
 
                     <input type="submit" value="Add">

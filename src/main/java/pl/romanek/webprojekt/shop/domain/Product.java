@@ -3,6 +3,7 @@ package pl.romanek.webprojekt.shop.domain;
 
 
 import java.math.BigDecimal;
+import org.springframework.web.multipart.MultipartFile;
 
 
 
@@ -18,6 +19,9 @@ private long unitsInStock;
 private long unitsInOrder;
 private boolean discontinued;
 private String condition;  
+private MultipartFile productImage;
+
+   
 
     
 public Product() {
@@ -111,6 +115,14 @@ this.unitPrice = unitPrice;
 
     public void setCondition(String condition) {
         this.condition = condition;
+    }
+    
+     public MultipartFile getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(MultipartFile productImage) {
+        this.productImage = productImage;
     }
 
 

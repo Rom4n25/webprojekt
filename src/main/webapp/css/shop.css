@@ -21,7 +21,9 @@
 
 .filterMenu{
     
-    
+    display:inline-block;
+    justify-content: center;
+    align-content: center;
     height: 400px;
     width:250px;
     min-width: 250px;
@@ -78,7 +80,7 @@
 
 .productPrice{
     position: absolute;
-    top:195px;
+    top:420px;
     right: 20px;
     color: red;
     font-family: "Lucida Console", Monaco, monospace;
@@ -130,7 +132,7 @@ a{
  
     padding-bottom: 30px;
     position: absolute;
-    top: 200px;
+    top: 425px;
 }
 
 
@@ -141,9 +143,9 @@ a{
   position: relative;
   opacity: 0.90;
   width: 300px;
-  height: 300px;
+  height: 530px;
   border-radius: 17px;
-  background-color: #f2f2f2;
+  background-color: white;
   padding: 20px;
   margin-top:20px;
   margin-left:20px;
@@ -185,10 +187,53 @@ body {
   }
 
 
+.logout{
+    margin:25px;
+    float:right;
+    width:70px;
+    
+}
 
 
+input[name=logoutBtn] {
+    margin:0;
+    width: 100%;
+    background-color: #f2f2f2;
+    color: #4d4d4d;
+    padding:10px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    border:solid;
+    border-color: #666666;
+    border-width: 1px;
+   
+    
+        
+}
+
+input[name=logoutBtn]:hover {
+    background-color: #d6d6d6;
+    
+   
+}
 
 
+input[name=addBtn] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 12px 0;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    
+}
+
+input[type=addBtn]:hover {
+    background-color: #45a049;
+}
 
 
 

@@ -173,3 +173,33 @@ input[type=submit]:hover {
 }
 
 
+.logout{
+    margin:25px;
+    float:right;
+    width:70px;
+    
+}
+
+
+input[name=logoutBtn] {
+    margin:0;
+    width: 100%;
+    background-color: #f2f2f2;
+    color: #4d4d4d;
+    padding:10px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    border:solid;
+    border-color: #666666;
+    border-width: 1px;
+   
+    
+        
+}
+
+input[name=logoutBtn]:hover {
+    background-color: #d6d6d6;
+    
+   
+}

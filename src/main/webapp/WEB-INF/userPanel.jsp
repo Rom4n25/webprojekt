@@ -7,7 +7,11 @@
     </head>
     <body>
         <header id="header">
-
+            <div class="logout">
+                <form action="/logout" >
+                    <input name="logoutBtn" type="submit" value="Logout" >
+                </form>
+            </div>
         </header>
 
         <main id="main">
@@ -41,10 +45,12 @@
                 <form action="/shop">
                     <input type="submit" value="Shop">
                 </form>
-                
-                 <form action="/crud">
+
+                <form action="/crud">
                     <input type="submit" value="CRUD">
                 </form>
+
+
 
             </article>
             <article id="article2">
@@ -54,6 +60,6 @@
 
             </article>
 
-             </main>
+        </main>
     </body>
 </html>

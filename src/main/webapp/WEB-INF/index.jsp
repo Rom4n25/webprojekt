@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -14,10 +16,14 @@
 
             <article id="article">
                 <p id="text">ACCOUNT LOGIN</p>
-                <div id="div"> 
-                    <p id="textError">${loginNotSucces}</p>
-                </div>
 
+                <c:if test="${flag}">
+
+                    <div id="div"> 
+                        <p id="textError">Wrong username or password!</p>
+                    </div>
+                    
+                </c:if>
                 <form action="login" method="POST">
 
 

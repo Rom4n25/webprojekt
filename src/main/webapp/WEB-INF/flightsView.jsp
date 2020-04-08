@@ -10,6 +10,11 @@
     <body>
 
         <header id="header">
+             <div class="logout">
+                <form action="/logout" >
+                    <input name="logoutBtn" type="submit" value="Logout" >
+                </form>
+            </div>
         </header>
 
         <main id="main">
