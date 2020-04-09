@@ -24,7 +24,7 @@
         
      
 <div>
-    <form action="/backToUserPanel">
+    <form action="/userPanel">
         <input type="submit" value="Back to User Panel">
     </form>
 </div>   

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 
     <head>
@@ -6,36 +7,42 @@
     </head>
 
     <body>
-        <header id="header">
-             <div class="logout">
+        <header class="header">
+            <div class="logout">
                 <form action="/logout" >
                     <input name="logoutBtn" type="submit" value="Logout" >
                 </form>
             </div>
         </header>
 
-        <main id="main">
-            <article id="article">
+
+        <main class="main">
+            <article class="article">
+
+                <p class="text_convert_currency">Convert currency</p>
 
 
-                <form action="waluta2">
-                    <p id="text">Convert currency</p>
-                    <div id="div">
+                <c:if test="${flag}">
 
-                        <p id="returnText"> ${msg} </p>
+                    <div class="div_for_return_text">
+                        <p class="returned_text"> ${currency} </p>
                     </div>
-                    <input type="text" id="hname" name="amount" placeholder="Type amount..">
+                </c:if>
+                
+                <form action="/currency" method="POST">
 
-                    <label for="lname">From</label>
-                    <select id="lname"type="text" name ="currency1">
+                    <input type="text" name="amount" placeholder="Type amount..">
+
+                    <label>From</label>
+                    <select "type="text" name ="currency1">
                         <option value="EUR">EUR</option>
                         <option value="PLN">PLN</option>
                         <option value="USD">USD</option>
                         <option value="CAD">CAD</option>
                     </select>
 
-                    <label for="cname">To</label>
-                    <select type="text" id="cname"name ="currency2" >
+                    <label>To</label>
+                    <select type="text" name ="currency2">
                         <option value="EUR">EUR</option>
                         <option value="PLN">PLN</option>
                         <option value="USD">USD</option>
@@ -45,7 +52,7 @@
                     <input type="submit" value="Convert">
                 </form>
 
-                <form action="/backToUserPanel">
+                <form action="/userPanel">
                     <input type="submit" value="Menu">
                 </form>
 

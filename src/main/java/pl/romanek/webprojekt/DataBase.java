@@ -3,6 +3,8 @@ package pl.romanek.webprojekt;
 import org.springframework.stereotype.Component;
 import java.util.HashMap;
 
+//STARY SYSTEM LOGOWANIA - KLASA NIEUŻYWANA
+
 @Component
 public class DataBase {
 

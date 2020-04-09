@@ -92,6 +92,23 @@ public class ProductController {
         return "shop";
 
     }
+    
+    
+        @RequestMapping("/shop/**/{price}/**")
+    public String filterProducts2(Model model, @MatrixVariable(pathVar = "price") Map<String, String> filterParams) {
+
+       
+        Set<Product> priceList = new HashSet<Product>();
+
+       
+        priceList.addAll(productService.getProductsByPriceFilter(filterParams));
+
+     
+        model.addAttribute("products", priceList);
+
+        return "shop";
+
+    }
 
     // mozna tez tak...
     // @GetMapping("/add")

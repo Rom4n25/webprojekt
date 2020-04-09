@@ -13,7 +13,7 @@ Hero's vehicle: ${hero1.vehicle.vehicletype}<br>
 Hero's weapon: ${hero1.weapon.weapontype}
 
 <div>
-    <form action="/backToUserPanel">
+    <form action="/userPanel">
         <input type="submit" value="Back to User Panel">
     </form>
 </div>

@@ -1,4 +1,4 @@
-#header {
+.header {
     
     opacity: 0.95;
     background-color:#45a049;
@@ -10,7 +10,7 @@
  
 }
 
-#main{
+.main{
   
     display: flex;
     justify-content: space-around;
@@ -18,7 +18,7 @@
    
 }
 
-#article1 {
+.article_form {
 
   
   opacity: 0.90;
@@ -39,7 +39,7 @@
 
 }
 
-#article2 {
+.article_out {
 
   opacity: 0.90;
   margin-top: 100px;
@@ -80,7 +80,7 @@ input[type=date]{
 }
 
 
-#text{
+.text{
     
     color:#4d4d4d;
     font-family: "Lucida Console", Monaco, monospace;

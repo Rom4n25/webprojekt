@@ -9,27 +9,27 @@
     </head>
 
     <body>
-        <header id="header">
+        <header class="header">
         </header>
 
-        <main id="main">
+        <main class="main">
 
-            <article id="article">
-                <p id="text">ACCOUNT LOGIN</p>
+            <article class="article">
+                <p class="account_login_text">ACCOUNT LOGIN</p>
 
                 <c:if test="${flag}">
 
-                    <div id="div"> 
-                        <p id="textError">Wrong username or password!</p>
+                    <div class="error_div"> 
+                        <p class="account_login_error_text">Wrong username or password!</p>
                     </div>
-                    
+
                 </c:if>
-                <form action="login" method="POST">
+                
+                <form action="/login" method="POST">
 
+                    <input type="text" name="username" placeholder="Type username..">
 
-                    <input type="text" id="username" name="username" placeholder="Type username..">
-
-                    <input type="password" id="password" name="password" placeholder="Type password..">
+                    <input type="password" name="password" placeholder="Type password..">
 
                     <input type="submit" value="Login">
 

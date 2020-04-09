@@ -1,4 +1,4 @@
-#header {
+.header {
     
     opacity: 0.95;
     background-color:#45a049;
@@ -10,7 +10,7 @@
  
 }
 
-#main{
+.main{
   
     display:flex;
     justify-content: space-around;
@@ -19,12 +19,12 @@
   
 }
 
-#article {
-
+.article {
+  position: relative;
   opacity: 0.90;
   margin-top: 100px;
   width: 400px;
-  height: 430px;
+  height: 410px;
   border-radius: 15px;
   background-color: #f2f2f2;
   padding-left: 20px;
@@ -37,7 +37,7 @@
 
 }
 
-#text{
+.text_convert_currency{
     
     color:#4d4d4d;
     font-family: "Lucida Console", Monaco, monospace;
@@ -46,13 +46,15 @@
     
 }
 
-#returnText{
+.returned_text{
     
     color:red;
     font-family: "Lucida Console", Monaco, monospace;
     font-size: 14px;
     text-align: center;
-    padding-top: 4px;
+    margin: 5px;
+    padding:0;
+   
 }
 
 body {
@@ -61,8 +63,11 @@ body {
     margin:0;
    }
 
-#div {
+.div_for_return_text {
     
+    top:55px;
+    position: absolute;
+    width: inherit;
     height:25px;
     background-color: #f1b7b7;
     text-align: center;
@@ -119,9 +124,7 @@ input[name=logoutBtn] {
     border:solid;
     border-color: #666666;
     border-width: 1px;
-   
-    
-        
+           
 }
 
 input[name=logoutBtn]:hover {

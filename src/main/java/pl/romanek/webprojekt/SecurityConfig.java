@@ -1,10 +1,10 @@
-
 package pl.romanek.webprojekt;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
@@ -43,26 +43,24 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         
         http.authorizeRequests()
-                .antMatchers("/").permitAll()
+                
                 .antMatchers("/shop/add").hasRole("ADMIN")
                 .anyRequest().hasAnyRole("USER","ADMIN")
                 .and()
                 .formLogin()
-                .loginProcessingUrl("/login") //tutaj musi byc to samo co jest w index.jsp ---> action="login"
+                .loginProcessingUrl("/login") //tutaj musi byc to samo co jest w index.jsp ---> action="/login"
                 .loginPage("/").permitAll()
                 .defaultSuccessUrl("/userPanel")
                 .failureUrl("/error")
                 .and()
                 .logout()
-                .logoutUrl("/logout")
+                .logoutUrl("/logout") //tutaj musi byc to samo co jest w stronach jsp w przyciskach ---> action="/logout"
                 .logoutSuccessUrl("/");
-                
-                http.csrf().disable();
+        
+        http.csrf().disable();
               
                
     }
     
-    
-    
-    
+ 
 }

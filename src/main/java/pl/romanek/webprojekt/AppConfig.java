@@ -38,15 +38,14 @@ public class AppConfig implements WebMvcConfigurer {
 
     // określam ładowanie statycznych elementów
     // folder resources stworzony pod Web-Pages jest domyśłny
-    // statyczny kontent nie powinien być serwowany przez springa bo wtedy czas się wydłuża
-    // po co ma wszystko przechodzić przez DispatcherServlet, kontrolery itp...
+   
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
         UrlPathHelper urlPathHelper = new UrlPathHelper();
         urlPathHelper.setRemoveSemicolonContent(false);
         configurer.setUrlPathHelper(urlPathHelper);
 
-        //tutaj jest konfiguracja aby MatrixVariables mozna bylo obslugiwac(filtrowanie wszyukiwania produktow)
+        //konfiguracja aby można było obsługiwać MatrixVariables (filtrowanie wszyukiwania produktow)
     }
 
     @Bean(name = "multipartResolver")
@@ -55,5 +54,6 @@ public class AppConfig implements WebMvcConfigurer {
         multipartResolver.setMaxUploadSize(100000);
         return multipartResolver;
     }
-
+       //konfiguracja aby można było ładować pliki 
+       //określenie maksymalnego rozmiaru pliku
 }

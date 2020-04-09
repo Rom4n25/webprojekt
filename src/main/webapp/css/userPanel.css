@@ -1,4 +1,4 @@
-#header {
+.header {
     
     opacity: 0.95;
     background-color:#45a049;
@@ -12,7 +12,7 @@
 
 }
 
-#main{
+.main{
   
     display:flex;
     flex-wrap: wrap;
@@ -22,7 +22,7 @@
   
 }
 
-#article1 {
+.article_menu {
 
   opacity: 0.90;
   margin-top: 100px;
@@ -38,7 +38,7 @@
   border-width: 2px;
 }
 
-#article2 {
+.article_callendar {
 
   opacity: 0.90;
   margin-top: 100px;
@@ -54,7 +54,7 @@
   border-width: 2px;
 }
 
-#text{
+.hello_text{
     
     color:#4d4d4d;
     font-family: "Lucida Console", Monaco, monospace;
@@ -62,7 +62,6 @@
     text-align: center;
     
 }
-
 
 
 body {
@@ -89,7 +88,7 @@ input[type=submit]:hover {
     background-color: #45a049;
 }
 
-.logout{
+.logout_div{
     margin:25px;
     float:right;
     width:70px;
