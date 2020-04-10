@@ -2,6 +2,8 @@ package pl.romanek.webprojekt.shop.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -36,15 +38,11 @@ public class ProductController {
     public String list(Model model) {
 
         model.addAttribute("products", productService.getAllProducts());
+       
         return "shop";
 
     }
 
-    @RequestMapping("/all")
-    public String allProducts(Model model) {
-        model.addAttribute("products", productService.getAllProducts());
-        return "shop";
-    }
 
     @RequestMapping("/product")
     public String getProductById(Model model, @RequestParam("id") String productId) {
@@ -58,57 +56,130 @@ public class ProductController {
     public String getProductsByCategory(Model model, @PathVariable("category") String productCategory) {
 
         model.addAttribute("products", productService.getProductsByCategory(productCategory));
+        model.addAttribute("category",productCategory);
+        
         return "shop";
     }
+    
+    @RequestMapping("/price")
+    public String getPrice(Model model, @RequestParam("low") String low, @RequestParam("high")String high, @RequestParam("category")String category){
+       
+         List<Product> productByCategory = new ArrayList<>();
+        if(category.isEmpty()){
+            
+         
+         productByCategory= productService.getAllProducts();
+            
+            
+        }else{
+            
+          
+        
+         productByCategory =  productService.getProductsByCategory(category);
+        
+        }
+        
+        Map<String, String> filterParams = new HashMap<>();
+        filterParams.put("low", low);
+        filterParams.put("high", high);
+        
+        Set<Product> priceList = new HashSet<Product>();
 
+        priceList.addAll(productService.getProductsByPriceFilter(filterParams));
+        priceList.retainAll(productByCategory);
+        
+        model.addAttribute("products", priceList);
+        model.addAttribute("category",category);
+         
+       
+        return "shop";
+    }
+    
+    
+    
+//    @RequestMapping("/{category}/{price}")
+//    public String getProductsByCategoryAndPrice(Model model, @PathVariable("category") String productCategory,@MatrixVariable(pathVar = "price") Map<String, String> filterParams) {
+//
+//        
+//        
+//        List<Product> productByCategory =  productService.getProductsByCategory(productCategory);
+//      
+//        Set<Product> priceList = new HashSet<Product>();
+//
+//        priceList.addAll(productService.getProductsByPriceFilter(filterParams));
+//     
+//        priceList.retainAll(productByCategory);
+//        
+//        
+//        model.addAttribute("products", priceList);
+//        
+//       
+//              
+//        return "shop";
+//    }
+
+    
+    
+    // INNE 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @RequestMapping("/filter/{ByCriteria}")
+    
     public String getProductsByFilter(Model model, @MatrixVariable(pathVar = "ByCriteria") Map<String, List<String>> filterParams) {
-
+        System.out.println("ELO");
         model.addAttribute("products", productService.getProductsByFilter(filterParams));
 
         return "shop";
 
     }
 
-    @RequestMapping("/{category}/{price}")
-    public String filterProducts(Model model, @PathVariable("category") String productCategory, @MatrixVariable(pathVar = "price") Map<String, String> filterParams, @RequestParam("manufacturer") String manufacturer) {
+//    @RequestMapping("/{category}/{price}")
+//    public String filterProducts(Model model, @PathVariable("category") String productCategory, @MatrixVariable(pathVar = "price") Map<String, String> filterParams, @RequestParam("manufacturer") String manufacturer) {
+//
+//        System.out.println("ELO");
+//        Set<Product> categoryList = new HashSet<>();
+//        Set<Product> priceList = new HashSet<>();
+//
+//        categoryList.addAll(productService.getProductsByCategory(productCategory));
+//        priceList.addAll(productService.getProductsByPriceFilter(filterParams));
+//
+//        categoryList.retainAll(priceList);
+//
+//        Set<Product> manufacturerList = new HashSet<Product>();
+//
+//        manufacturerList.addAll(productService.getProductsByManufacturer(manufacturer));
+//
+//        categoryList.retainAll(manufacturerList);
+//      
+//
+//        model.addAttribute("products", categoryList);
+//
+//        return "shop";
+//
+//    }
 
-        Set<Product> categoryList = new HashSet<Product>();
-        Set<Product> priceList = new HashSet<Product>();
-
-        categoryList.addAll(productService.getProductsByCategory(productCategory));
-        priceList.addAll(productService.getProductsByPriceFilter(filterParams));
-
-        categoryList.retainAll(priceList);
-
-        Set<Product> manufacturerList = new HashSet<Product>();
-
-        manufacturerList.addAll(productService.getProductsByManufacturer(manufacturer));
-
-        categoryList.retainAll(manufacturerList);
-
-        model.addAttribute("products", categoryList);
-
-        return "shop";
-
-    }
-    
-    
-        @RequestMapping("/shop/**/{price}/**")
-    public String filterProducts2(Model model, @MatrixVariable(pathVar = "price") Map<String, String> filterParams) {
-
-       
-        Set<Product> priceList = new HashSet<Product>();
-
-       
-        priceList.addAll(productService.getProductsByPriceFilter(filterParams));
-
-     
-        model.addAttribute("products", priceList);
-
-        return "shop";
-
-    }
+//    @RequestMapping("/filters/{price}")
+//            
+//    public String filterProducts2(Model model, @MatrixVariable(pathVar = "price") Map<String, String> filterParams) {
+//        System.out.println("ELO2");
+//        Set<Product> priceList = new HashSet<Product>();
+//
+//        priceList.addAll(productService.getProductsByPriceFilter(filterParams));
+//        System.out.println(priceList);
+//
+//        model.addAttribute("products", priceList);
+//
+//        return "shop";
+//
+//    }
 
     // mozna tez tak...
     // @GetMapping("/add")
@@ -146,27 +217,27 @@ public class ProductController {
         binder.setDisallowedFields("unitsInOrder", "discontinued");
     }
 
-    @GetMapping("/{ByCriteria}/{price}")
-    public String superFilterProducts(Model model, @MatrixVariable(pathVar = "ByCriteria") Map<String, List<String>> filterParams1, @MatrixVariable(pathVar = "price") Map<String, String> filterParams2, @RequestParam("manufacturer") String manufacturer) {
-
-        Set<Product> categoryList = new HashSet<Product>();
-        Set<Product> priceList = new HashSet<Product>();
-
-        categoryList.addAll(productService.getProductsByFilter(filterParams1));
-        priceList.addAll(productService.getProductsByPriceFilter(filterParams2));
-
-        categoryList.retainAll(priceList);
-
-        Set<Product> manufacturerList = new HashSet<Product>();
-
-        manufacturerList.addAll(productService.getProductsByManufacturer(manufacturer));
-
-        categoryList.retainAll(manufacturerList);
-
-        model.addAttribute("products", categoryList);
-
-        return "shop";
-
-    }
+//    @GetMapping("/{ByCriteria}/{price}")
+//    public String superFilterProducts(Model model, @MatrixVariable(pathVar = "ByCriteria") Map<String, List<String>> filterParams1, @MatrixVariable(pathVar = "price") Map<String, String> filterParams2, @RequestParam("manufacturer") String manufacturer) {
+//
+//        Set<Product> categoryList = new HashSet<Product>();
+//        Set<Product> priceList = new HashSet<Product>();
+//
+//        categoryList.addAll(productService.getProductsByFilter(filterParams1));
+//        priceList.addAll(productService.getProductsByPriceFilter(filterParams2));
+//
+//        categoryList.retainAll(priceList);
+//
+//        Set<Product> manufacturerList = new HashSet<Product>();
+//
+//        manufacturerList.addAll(productService.getProductsByManufacturer(manufacturer));
+//
+//        categoryList.retainAll(manufacturerList);
+//
+//        model.addAttribute("products", categoryList);
+//
+//        return "shop";
+//
+//    }
 
 }

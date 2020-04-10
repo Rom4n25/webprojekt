@@ -15,6 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class LogInController {
@@ -33,8 +34,7 @@ public class LogInController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
         model.addAttribute("username",currentPrincipalName);
-        
-        return "userPanel";
+                return "userPanel";
     }
 
     @GetMapping("/error")
@@ -44,6 +44,9 @@ public class LogInController {
 
         return "index";
     }
+
+    
+}
 
     //  @GetMapping("/logout")
     //  public String logout(){
@@ -88,4 +91,4 @@ public class LogInController {
     //      writer.flush();
     //      writer.close();
     //    }
-}
+

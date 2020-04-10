@@ -13,13 +13,12 @@ import pl.romanek.webprojekt.shop.domain.Product;
 public class InMemoryProductRepository implements ProductRepository {
 
     private List<Product> listOfProducts = new ArrayList<Product>();
-   
+
     @Override
     public List<Product> getProductByManufacturer(String manufacturer) {
-        
-            List<Product> productsByManufacturer = new ArrayList<>();
-        
-        
+
+        List<Product> productsByManufacturer = new ArrayList<>();
+
         for (Product productByManufacturer : listOfProducts) {
 
             if (productByManufacturer.getManufacturer().equalsIgnoreCase(manufacturer)) {
@@ -40,7 +39,7 @@ public class InMemoryProductRepository implements ProductRepository {
         Set<Product> productsByHighPrice = new HashSet<Product>();
         Set<Product> productsByPrice = new HashSet<Product>();
 
-        if (criterias.contains("low")) {
+   if (criterias.contains("low")) {
 
             BigDecimal price = new BigDecimal(filterParams.get("low"));
 
@@ -77,9 +76,6 @@ public class InMemoryProductRepository implements ProductRepository {
             productsByPrice.retainAll(productsByHighPrice);
             
         }
-        
-       
-        
         return productsByPrice;
 
     }
@@ -119,7 +115,7 @@ public class InMemoryProductRepository implements ProductRepository {
 
     @Override
     public List<Product> getProductByCategory(String category) {
-        
+
         List<Product> productsByCategory = new ArrayList<>();
 
         for (Product productByCategory : listOfProducts) {
@@ -144,7 +140,7 @@ public class InMemoryProductRepository implements ProductRepository {
         iphone.setManufacturer("Apple");
         iphone.setUnitsInStock(1000);
         iphone.setCondition("New");
-        
+
         Product laptop_dell = new Product("P1235", "Dell Inspiron", new BigDecimal(700));
 
         laptop_dell.setDescription("Dell Inspiron, 14-calowy laptop(czarny)z procesorem Intel Core 3. generacji");
@@ -152,7 +148,6 @@ public class InMemoryProductRepository implements ProductRepository {
         laptop_dell.setManufacturer("Dell");
         laptop_dell.setUnitsInStock(1000);
         laptop_dell.setCondition("New");
-        
 
         Product tablet_Nexus = new Product("P1236", "Nexus 7", new BigDecimal(300));
 
@@ -161,7 +156,6 @@ public class InMemoryProductRepository implements ProductRepository {
         tablet_Nexus.setManufacturer("Google");
         tablet_Nexus.setUnitsInStock(1000);
         tablet_Nexus.setCondition("New");
-        
 
         listOfProducts.add(iphone);
         listOfProducts.add(laptop_dell);
@@ -171,7 +165,7 @@ public class InMemoryProductRepository implements ProductRepository {
 
     @Override
     public void addProduct(Product prdct) {
-      
+
         listOfProducts.add(prdct);
     }
 

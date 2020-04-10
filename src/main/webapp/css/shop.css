@@ -254,4 +254,31 @@ input[class=catBtn]:hover {
     background-color: #45a049;
 }
 
+input[type=text], select {
+   
+    width: 100%;
+    padding: 12px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    box-sizing: border-box ;
+}
+
+
+
+input[class=filter_button] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 4px 0;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+input[class=filter_button]:hover {
+    background-color: #45a049;
+}
 

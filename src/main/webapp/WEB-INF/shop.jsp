@@ -46,10 +46,11 @@
                     <p class="text">Filter</p>
                     
                     <form action="/shop/price">
-                        <label>Hero name</label>
+                       
                         <input type="text"  name="low" placeholder="Type lowest price">
                         <input type="text"  name="high" placeholder="Type highest price">
-                           <input type="submit" value="Filter">
+                        <input type="hidden" name="category" value="${category}">
+                           <input class="filter_button" type="submit" value="Filter">
                     </form>
                     
                     
