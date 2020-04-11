@@ -8,62 +8,51 @@ import pl.romanek.webprojekt.crud.domain.Person;
 @Repository
 public class InMemoryPersonRepository implements PersonRepository {
 
-  
-
-    
-
     private List<Person> personList = new ArrayList<>();
-    
-    
-     @Override
+
+    @Override
     public Person getPersonById(String string) {
-       
-         Person person = null;
-      for(Person personById:personList){
-          
-          if(personById.getPersonId().equalsIgnoreCase(string)){
-              
-              person = personById;
-              break;
-          }
-      }
-      return person;
+
+        Person person = null;
+        for (Person personById : personList) {
+
+            if (personById.getPersonId().equalsIgnoreCase(string)) {
+
+                person = personById;
+                break;
+            }
+        }
+        return person;
     }
-    
+
     @Override
     public Person getPersonByEmail(String string) {
-        
+
         Person person = null;
-      for(Person personByEmail:personList){
-          
-          if(personByEmail.getEmail().equalsIgnoreCase(string)){
-              
-              person = personByEmail;
-              break;
-          }
-      }
-      return person;
+        for (Person personByEmail : personList) {
+
+            if (personByEmail.getEmail().equalsIgnoreCase(string)) {
+
+                person = personByEmail;
+                break;
+            }
+        }
+        return person;
     }
-    
+
     public InMemoryPersonRepository() {
-      
-    Person person1 = new Person("Mateusz","Romanek","romanek1802@gmail.com");
-    personList.add(person1);
-        
-    
+
+        Person person1 = new Person("Mateusz", "Romanek", "romanek1802@gmail.com");
+        personList.add(person1);
+
     }
-    
-    
+
     @Override
     public List<Person> getAllPerson() {
-        
+
         return this.personList;
-        
+
     }
-
-    
-
-   
 
     @Override
     public void deletePerson(Person person) {

@@ -34,163 +34,65 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @RequestMapping
+    @GetMapping
     public String list(Model model) {
 
         model.addAttribute("products", productService.getAllProducts());
-       
-        return "shop";
+        model.addAttribute("category", "all");
+
+        return "shopView";
 
     }
 
-
-    @RequestMapping("/product")
+    @GetMapping("/product")
     public String getProductById(Model model, @RequestParam("id") String productId) {
 
         model.addAttribute("product", productService.getProductById(productId));
 
-        return "product";
+        return "shopProductView";
     }
 
-    @RequestMapping("/{category}")
+    @GetMapping("/{category}")
     public String getProductsByCategory(Model model, @PathVariable("category") String productCategory) {
 
         model.addAttribute("products", productService.getProductsByCategory(productCategory));
-        model.addAttribute("category",productCategory);
-        
+        model.addAttribute("category", productCategory);
+
         return "shop";
     }
-    
-    @RequestMapping("/price")
-    public String getPrice(Model model, @RequestParam("low") String low, @RequestParam("high")String high, @RequestParam("category")String category){
-       
-         List<Product> productByCategory = new ArrayList<>();
-        if(category.isEmpty()){
-            
-         
-         productByCategory= productService.getAllProducts();
-            
-            
-        }else{
-            
-          
-        
-         productByCategory =  productService.getProductsByCategory(category);
-        
+
+    @PostMapping("/price")
+    public String getPrice(Model model, @RequestParam("low") String low, @RequestParam("high") String high, @RequestParam(value = "category", required = false) String category) {
+
+        List<Product> productByCategory = new ArrayList<>();
+        if (category.equals("all")) {
+
+            productByCategory = productService.getAllProducts();
+
+        } else {
+
+            productByCategory = productService.getProductsByCategory(category);
+
         }
-        
+
         Map<String, String> filterParams = new HashMap<>();
         filterParams.put("low", low);
         filterParams.put("high", high);
-        
+
         Set<Product> priceList = new HashSet<Product>();
 
         priceList.addAll(productService.getProductsByPriceFilter(filterParams));
         priceList.retainAll(productByCategory);
-        
+
         model.addAttribute("products", priceList);
-        model.addAttribute("category",category);
-         
-       
-        return "shop";
-    }
-    
-    
-    
-//    @RequestMapping("/{category}/{price}")
-//    public String getProductsByCategoryAndPrice(Model model, @PathVariable("category") String productCategory,@MatrixVariable(pathVar = "price") Map<String, String> filterParams) {
-//
-//        
-//        
-//        List<Product> productByCategory =  productService.getProductsByCategory(productCategory);
-//      
-//        Set<Product> priceList = new HashSet<Product>();
-//
-//        priceList.addAll(productService.getProductsByPriceFilter(filterParams));
-//     
-//        priceList.retainAll(productByCategory);
-//        
-//        
-//        model.addAttribute("products", priceList);
-//        
-//       
-//              
-//        return "shop";
-//    }
-
-    
-    
-    // INNE 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    @RequestMapping("/filter/{ByCriteria}")
-    
-    public String getProductsByFilter(Model model, @MatrixVariable(pathVar = "ByCriteria") Map<String, List<String>> filterParams) {
-        System.out.println("ELO");
-        model.addAttribute("products", productService.getProductsByFilter(filterParams));
+        model.addAttribute("category", category);
 
         return "shop";
-
     }
 
-//    @RequestMapping("/{category}/{price}")
-//    public String filterProducts(Model model, @PathVariable("category") String productCategory, @MatrixVariable(pathVar = "price") Map<String, String> filterParams, @RequestParam("manufacturer") String manufacturer) {
-//
-//        System.out.println("ELO");
-//        Set<Product> categoryList = new HashSet<>();
-//        Set<Product> priceList = new HashSet<>();
-//
-//        categoryList.addAll(productService.getProductsByCategory(productCategory));
-//        priceList.addAll(productService.getProductsByPriceFilter(filterParams));
-//
-//        categoryList.retainAll(priceList);
-//
-//        Set<Product> manufacturerList = new HashSet<Product>();
-//
-//        manufacturerList.addAll(productService.getProductsByManufacturer(manufacturer));
-//
-//        categoryList.retainAll(manufacturerList);
-//      
-//
-//        model.addAttribute("products", categoryList);
-//
-//        return "shop";
-//
-//    }
-
-//    @RequestMapping("/filters/{price}")
-//            
-//    public String filterProducts2(Model model, @MatrixVariable(pathVar = "price") Map<String, String> filterParams) {
-//        System.out.println("ELO2");
-//        Set<Product> priceList = new HashSet<Product>();
-//
-//        priceList.addAll(productService.getProductsByPriceFilter(filterParams));
-//        System.out.println(priceList);
-//
-//        model.addAttribute("products", priceList);
-//
-//        return "shop";
-//
-//    }
-
-    // mozna tez tak...
-    // @GetMapping("/add")
-    // public String getAddNewProductForm(Model model) {
-    // Product newProduct = new Product();
-    // model.addAttribute("newProduct", newProduct);
-    // return "addProduct";
-    // }
     @GetMapping("/add")
     public String getAddNewProductForm(@ModelAttribute("newProduct") Product newProduct) {
-        return "addProduct";
+        return "shopAddView";
     }
 
     @PostMapping("/add")
@@ -217,6 +119,80 @@ public class ProductController {
         binder.setDisallowedFields("unitsInOrder", "discontinued");
     }
 
+    // POZOSTALE FILTRY  - WROCIC DO TEGO PRZY NAUCE HIBERNATE
+//    @RequestMapping("/{category}/{price}")
+//    public String getProductsByCategoryAndPrice(Model model, @PathVariable("category") String productCategory,@MatrixVariable(pathVar = "price") Map<String, String> filterParams) {
+//
+//        
+//        List<Product> productByCategory =  productService.getProductsByCategory(productCategory);
+//      
+//        Set<Product> priceList = new HashSet<Product>();
+//
+//        priceList.addAll(productService.getProductsByPriceFilter(filterParams));
+//     
+//        priceList.retainAll(productByCategory);
+//        
+//        
+//        model.addAttribute("products", priceList);
+//        
+//       
+//              
+//        return "shop";
+//    }
+//    @RequestMapping("/filter/{ByCriteria}")
+//    
+//    public String getProductsByFilter(Model model, @MatrixVariable(pathVar = "ByCriteria") Map<String, List<String>> filterParams) {
+//        System.out.println("ELO");
+//        model.addAttribute("products", productService.getProductsByFilter(filterParams));
+//
+//        return "shop";
+//
+//    }
+//    @RequestMapping("/{category}/{price}")
+//    public String filterProducts(Model model, @PathVariable("category") String productCategory, @MatrixVariable(pathVar = "price") Map<String, String> filterParams, @RequestParam("manufacturer") String manufacturer) {
+//
+//        System.out.println("ELO");
+//        Set<Product> categoryList = new HashSet<>();
+//        Set<Product> priceList = new HashSet<>();
+//
+//        categoryList.addAll(productService.getProductsByCategory(productCategory));
+//        priceList.addAll(productService.getProductsByPriceFilter(filterParams));
+//
+//        categoryList.retainAll(priceList);
+//
+//        Set<Product> manufacturerList = new HashSet<Product>();
+//
+//        manufacturerList.addAll(productService.getProductsByManufacturer(manufacturer));
+//
+//        categoryList.retainAll(manufacturerList);
+//      
+//
+//        model.addAttribute("products", categoryList);
+//
+//        return "shop";
+//
+//    }
+//    @RequestMapping("/filters/{price}")
+//            
+//    public String filterProducts2(Model model, @MatrixVariable(pathVar = "price") Map<String, String> filterParams) {
+//        System.out.println("ELO2");
+//        Set<Product> priceList = new HashSet<Product>();
+//
+//        priceList.addAll(productService.getProductsByPriceFilter(filterParams));
+//        System.out.println(priceList);
+//
+//        model.addAttribute("products", priceList);
+//
+//        return "shop";
+//
+//    }
+    // mozna tez tak...
+    // @GetMapping("/add")
+    // public String getAddNewProductForm(Model model) {
+    // Product newProduct = new Product();
+    // model.addAttribute("newProduct", newProduct);
+    // return "addProduct";
+    // }
 //    @GetMapping("/{ByCriteria}/{price}")
 //    public String superFilterProducts(Model model, @MatrixVariable(pathVar = "ByCriteria") Map<String, List<String>> filterParams1, @MatrixVariable(pathVar = "price") Map<String, String> filterParams2, @RequestParam("manufacturer") String manufacturer) {
 //
@@ -239,5 +215,4 @@ public class ProductController {
 //        return "shop";
 //
 //    }
-
 }

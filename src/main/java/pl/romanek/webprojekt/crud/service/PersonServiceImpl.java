@@ -1,4 +1,3 @@
-
 package pl.romanek.webprojekt.crud.service;
 
 import java.util.List;
@@ -8,47 +7,38 @@ import pl.romanek.webprojekt.crud.domain.Person;
 import pl.romanek.webprojekt.crud.repository.PersonRepository;
 
 @Service
-public class PersonServiceImpl implements PersonService{
-
-   
-  
-   
+public class PersonServiceImpl implements PersonService {
 
     @Autowired
     PersonRepository personRepository;
-    
-    
-      @Override
+
+    @Override
     public Person getPersonById(String string) {
-     
+
         return personRepository.getPersonById(string);
     }
 
-    
-     @Override
+    @Override
     public Person getPersonByEmail(String string) {
-       
+
         return personRepository.getPersonByEmail(string);
     }
-    
-        @Override
+
+    @Override
     public List<Person> getAllPerson() {
         return personRepository.getAllPerson();
     }
 
-           
     @Override
     public void addPerson(Person person) {
-        
-        personRepository.addPerson(person);
-        
-    }
 
- 
+        personRepository.addPerson(person);
+
+    }
 
     @Override
     public void deletePerson(Person person) {
         personRepository.deletePerson(person);
     }
-    
+
 }

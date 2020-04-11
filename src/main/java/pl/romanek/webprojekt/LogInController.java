@@ -28,13 +28,13 @@ public class LogInController {
         return "index";
     }
 
-    @GetMapping("/userPanel")
+    @GetMapping("/menu")
     public String userPanel(Model model) {
         
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
         model.addAttribute("username",currentPrincipalName);
-                return "userPanel";
+                return "menuView";
     }
 
     @GetMapping("/error")

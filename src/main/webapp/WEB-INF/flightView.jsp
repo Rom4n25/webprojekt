@@ -12,38 +12,40 @@
         <header class="header">
             <div class="logout">
                 <form action="/logout" >
-                    <input name="logoutBtn" type="submit" value="Logout" >
+                    <input class="logoutBtn" type="submit" value="Logout" >
+                </form>
+            </div>
+            
+               <div class="menu">
+                <form action="/menu" >
+                    <input class="menuBtn" type="submit" value="Menu" >
                 </form>
             </div>
         </header>
 
         <main class="main">
             <article class="article_form">
-
+            <p class="text_check_flights">Check Flights</p>
                 <form action="/flight" method="POST">
-                    <p class="text">Choose airport</p>
+                    <label class="labelText">Choose airport</label>
                     <select "type="text" name ="airportname">
                         <option value="EPKK">Krakow</option>
                         <option value="EDDF">Frankfurt</option>
                     </select>
 
-                    <label>Select date </label><br>
+                    <label class="labelText">Select date </label><br>
                     <input type="date" name="date"><br>
 
-                    <label>From </label>
+                    <label class="labelText">From: </label>
                     <input type="time" name="time1"><br>
 
-                    <label>To</label>
+                    <label class="labelText">To:</label>
                     <input type="time" name="time2">
 
                     <input type="submit" value="Check">
                 </form>
 
-                <section>
-                    <form action="/userPanel">
-                        <input type="submit" value="Menu">
-                    </form>
-                </section>
+             
 
             </article>
 

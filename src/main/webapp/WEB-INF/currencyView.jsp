@@ -10,7 +10,13 @@
         <header class="header">
             <div class="logout">
                 <form action="/logout" >
-                    <input name="logoutBtn" type="submit" value="Logout" >
+                    <input class="logoutBtn" type="submit" value="Logout" >
+                </form>
+            </div>
+            
+               <div class="menu">
+                <form action="/menu" >
+                    <input class="menuBtn" type="submit" value="Menu" >
                 </form>
             </div>
         </header>
@@ -33,7 +39,7 @@
 
                     <input type="text" name="amount" placeholder="Type amount..">
 
-                    <label>From</label>
+                    <label class="labelText">From:</label>
                     <select "type="text" name ="currency1">
                         <option value="EUR">EUR</option>
                         <option value="PLN">PLN</option>
@@ -41,7 +47,7 @@
                         <option value="CAD">CAD</option>
                     </select>
 
-                    <label>To</label>
+                    <label class="labelText">To:</label>
                     <select type="text" name ="currency2">
                         <option value="EUR">EUR</option>
                         <option value="PLN">PLN</option>
@@ -52,9 +58,7 @@
                     <input type="submit" value="Convert">
                 </form>
 
-                <form action="/userPanel">
-                    <input type="submit" value="Menu">
-                </form>
+               
 
 
             </article>

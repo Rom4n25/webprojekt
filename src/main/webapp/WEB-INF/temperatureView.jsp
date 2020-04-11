@@ -12,7 +12,13 @@
         <header class="header">
             <div class="logout">
                 <form action="/logout" >
-                    <input name="logoutBtn" type="submit" value="Logout" >
+                    <input class="logoutBtn" type="submit" value="Logout" >
+                </form>
+            </div>
+            
+               <div class="menu">
+                <form action="/menu" >
+                    <input class="menuBtn" type="submit" value="Menu" >
                 </form>
             </div>
         </header>
@@ -32,10 +38,7 @@
                     <input type="submit" value="Check">
                 </form>
 
-                <form action="/userPanel">
-                    <input type="submit" value="Menu">
-                </form>
-
+              
         </main>     
     </article>
 

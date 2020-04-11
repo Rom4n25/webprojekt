@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginProcessingUrl("/login") //tutaj musi byc to samo co jest w index.jsp ---> action="/login"
                 .loginPage("/").permitAll()
-                .defaultSuccessUrl("/userPanel")
+                .defaultSuccessUrl("/menu")
                 .failureUrl("/error")
                 .and()
                 .logout()

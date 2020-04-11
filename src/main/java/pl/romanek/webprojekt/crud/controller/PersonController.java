@@ -18,44 +18,44 @@ public class PersonController {
     @Autowired
     PersonService personService;
 
-    @RequestMapping
+    @GetMapping
     public String mainPage(Model model) {
 
         model.addAttribute("person", personService.getAllPerson());
 
-        return "crudMain";
+        return "crudView";
     }
 
-    @PostMapping("/add")
-    public String add1(@ModelAttribute("person") Person person) {
-
-        personService.addPerson(person);
-
-        return "redirect:/crud";
-    }
-
+    
     @GetMapping("/add")
     public String add2(Model model) {
-
+        
+        Boolean flagAdd = true;
         model.addAttribute("person", personService.getAllPerson());
-
-        return "crudAdd";
+        model.addAttribute("flagAdd",flagAdd);
+        
+        return "crudView";
     }
-
-    @RequestMapping("/delete")
-    public String delete(Model model, @RequestParam("id") String id) {
-
-        personService.deletePerson(personService.getPersonById(id));
-
+    
+    
+    @PostMapping("/add")
+    public String add1(@ModelAttribute("person") Person person) {
+        
+        personService.addPerson(person);
+        
         return "redirect:/crud";
     }
 
+    
+            
     @GetMapping("/edit")
     public String edit(Model model, @RequestParam("id") String id) {
 
-        model.addAttribute("person", personService.getPersonById(id));
-
-        return "crudEdit";
+        Boolean flag = true;
+        model.addAttribute("personById", personService.getPersonById(id));
+        model.addAttribute("person", personService.getAllPerson());
+        model.addAttribute("flag",flag);
+        return "crudView";
     }
 
     @PostMapping("/edit")
@@ -80,4 +80,16 @@ public class PersonController {
         return "redirect:/crud";
     }
 
+    
+    
+    @GetMapping("/delete")
+    public String delete(Model model, @RequestParam("id") String id) {
+
+        personService.deletePerson(personService.getPersonById(id));
+
+        return "redirect:/crud";
+    }
+    
+        
 }
+

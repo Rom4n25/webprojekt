@@ -133,13 +133,30 @@ public class InMemoryProductRepository implements ProductRepository {
 
     public InMemoryProductRepository() {
 
-        Product iphone = new Product("P1234", "iphone 5s", new BigDecimal(500));
+        Product iphone = new Product("P1234", "iPhone 8", new BigDecimal(500));
 
-        iphone.setDescription("Apple iPhone 5s, smartfon z 4-calowym wyświetlaczem o rozdzielczości 640×1136 oraz 8-megapikselowym aparatem");
+        iphone.setDescription("Apple iPhone 8, smartfon z 4-calowym wyświetlaczem o rozdzielczości 640×1136 oraz 8-megapikselowym aparatem");
         iphone.setCategory("Smartphone");
         iphone.setManufacturer("Apple");
         iphone.setUnitsInStock(1000);
         iphone.setCondition("New");
+        
+        
+        Product samsungs20 = new Product("P1237" ,"Samsung S20", new BigDecimal(3999));
+        
+        samsungs20.setDescription("Samsung S20, wyposażono w ośmiordzeniowy procesor oraz nowe kości pamięci.Teraz myśli i działa szybciej");
+        samsungs20.setCategory("Smartphone");
+        samsungs20.setManufacturer("Samsung");
+        samsungs20.setUnitsInStock(1000);
+        samsungs20.setCondition("New");
+        
+        Product lgv40 = new Product("P1238" ,"LG V40", new BigDecimal(2999));
+        
+        lgv40.setDescription("LG V40, wyposażono w ośmiordzeniowy procesor oraz nowe kości pamięci.Teraz myśli i działa szybciej");
+        lgv40.setCategory("Smartphone");
+        lgv40.setManufacturer("LG");
+        lgv40.setUnitsInStock(1000);
+        lgv40.setCondition("New");
 
         Product laptop_dell = new Product("P1235", "Dell Inspiron", new BigDecimal(700));
 
@@ -148,6 +165,14 @@ public class InMemoryProductRepository implements ProductRepository {
         laptop_dell.setManufacturer("Dell");
         laptop_dell.setUnitsInStock(1000);
         laptop_dell.setCondition("New");
+        
+        Product laptop_apple = new Product("P1239", "Apple MacBook", new BigDecimal(700));
+
+        laptop_apple.setDescription("Nowy MacBook Air ma olśniewający wyświetlacz Retina");
+        laptop_apple.setCategory("Laptop");
+        laptop_apple.setManufacturer("Apple");
+        laptop_apple.setUnitsInStock(1000);
+        laptop_apple.setCondition("New");
 
         Product tablet_Nexus = new Product("P1236", "Nexus 7", new BigDecimal(300));
 
@@ -160,6 +185,12 @@ public class InMemoryProductRepository implements ProductRepository {
         listOfProducts.add(iphone);
         listOfProducts.add(laptop_dell);
         listOfProducts.add(tablet_Nexus);
+        listOfProducts.add(samsungs20);
+        listOfProducts.add(lgv40);
+        listOfProducts.add(laptop_apple);
+        
+    
+      
 
     }
 
