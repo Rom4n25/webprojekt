@@ -1,8 +1,10 @@
 package pl.romanek.webprojekt;
 
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -19,6 +21,9 @@ import org.springframework.security.web.firewall.StrictHttpFirewall;
 @ComponentScan({"pl.romanek.webprojekt"})
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+
+    
+    
     @Bean
     public UserDetailsService userDetailsService() {
 
@@ -41,6 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
+                .antMatchers("/login/*").permitAll()
                 .antMatchers("/shop/add").hasRole("ADMIN")
                 .anyRequest().hasAnyRole("USER", "ADMIN")
                 .and()
@@ -77,5 +83,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         super.configure(web);
         web.httpFirewall(allowUrlEncodedSlashHttpFirewall());
     }
+
 
 }

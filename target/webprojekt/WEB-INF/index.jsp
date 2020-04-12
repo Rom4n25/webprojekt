@@ -10,12 +10,22 @@
 
     <body>
         <header class="header">
+            <div class="language_div">
+                
+                <form action="/login/" >
+                    <input class="languageBtn" type="submit" name="language" value="PL" >
+                </form>
+                 <form action="/login/" >
+                    <input class="languageBtn" type="submit" name="language" value="US" >
+                </form>
+                
+            </div>
         </header>
 
         <main class="main">
 
             <article class="article">
-                <p class="account_login_text">ACCOUNT LOGIN</p>
+                <p class="account_login_text"><spring:message code="index.p.account.login.text"></spring:message></p>
 
                 <c:if test="${flag}">
 
@@ -24,14 +34,14 @@
                     </div>
 
                 </c:if>
-                
+
                 <form action="/login" method="POST">
 
-                    <input type="text" name="username" placeholder="Type username..">
+                    <input type="text" name="username" placeholder="<spring:message code="index.input.placeholder.username.text"></spring:message>">
 
-                    <input type="password" name="password" placeholder="Type password..">
+                    <input type="password" name="password" placeholder="<spring:message code="index.input.placeholder.password.text"></spring:message>">
 
-                    <input type="submit" value="Login">
+                    <input type="submit" value="<spring:message code="index.input.login.button"></spring:message>">
 
                 </form>
 

@@ -27,7 +27,13 @@ public class LogInController {
     public String homePage() {
         return "index";
     }
-
+    
+    @GetMapping("/login")  //moge miec strone index.jsp w pliku WEB-INF i jak laduje sie spring to wczytuje automatycznie strone startowa
+    public String homePage2() {
+        return "index";
+    }
+    
+    
     @GetMapping("/menu")
     public String userPanel(Model model) {
         
