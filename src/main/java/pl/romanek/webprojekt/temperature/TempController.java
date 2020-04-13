@@ -25,7 +25,7 @@ public class TempController {
         Boolean flag_error_blank = false;
         Boolean flag_error_notfound = false;
        
-        if(city.isBlank()){
+        if(city.equals("")){
             
             
             flag_error_blank = true;
