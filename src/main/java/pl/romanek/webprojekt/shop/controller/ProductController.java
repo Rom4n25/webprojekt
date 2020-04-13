@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -96,7 +97,11 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    public String processAddNewProductForm(@ModelAttribute("newProduct") Product productToBeAdded, BindingResult result, HttpServletRequest request) throws IOException {
+    public String processAddNewProductForm(@ModelAttribute("newProduct") @Valid Product productToBeAdded, BindingResult result, HttpServletRequest request) throws IOException {
+
+        if (result.hasErrors()) {
+            return "shopAddView";
+        }
 
         String[] suppressedFields = result.getSuppressedFields();
         if (suppressedFields.length > 0) {

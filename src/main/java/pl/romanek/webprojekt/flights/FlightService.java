@@ -1,4 +1,3 @@
-
 package pl.romanek.webprojekt.flights;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -12,28 +11,30 @@ import java.util.ArrayList;
 import java.util.Date;
 import org.springframework.stereotype.Service;
 
-
 @Service
 class FlightService {
-    
-    
-            private ArrayList<String> depAirports;
-            private ArrayList<String> depDates;
-            private ArrayList<String> arrDates;
-            private ArrayList<String> callsigns;
 
-    
-    
-    public void checkFligt(String date, String time1, String time2, String airport) throws MalformedURLException, IOException{
-    
-            //zapisuje poczatkowa i koncowa date w takim formacie w stringu aby moc go przerobic na UNIX Time (liczony w sekundach od ktoregos tam roku)
-            String from = date + " " + time1 + ":00.0";
-            String to = date + " " + time2 + ":00.0";
+    private ArrayList<String> depAirports;
+    private ArrayList<String> depDates;
+    private ArrayList<String> arrDates;
+    private ArrayList<String> callsigns;
 
-            //przerabiam ww. stringi na longi w formacie UNIX
-            long t1 = Timestamp.valueOf(from).getTime() / 1000;
-            long t2 = Timestamp.valueOf(to).getTime() / 1000;
+    public boolean checkFligt(Flight flight) {
 
+        String date = flight.getDate();
+        String time1 = flight.getTime1();
+        String time2 = flight.getTime2();
+        String airport = flight.getAirport();
+
+        //zapisuje poczatkowa i koncowa date w takim formacie w stringu aby moc go przerobic na UNIX Time (liczony w sekundach od ktoregos tam roku)
+        String from = date + " " + time1 + ":00.0";
+        String to = date + " " + time2 + ":00.0";
+
+        //przerabiam ww. stringi na longi w formacie UNIX
+        long t1 = Timestamp.valueOf(from).getTime() / 1000;
+        long t2 = Timestamp.valueOf(to).getTime() / 1000;
+
+        try {
             //odwoluje sie do url gdzie zmiennymi sa nazwa lotniska oraz data poczatkowa i koncowa w formacie UNIX
             URL url = new URL("https://Romanek:malec235@opensky-network.org/api/flights/arrival?airport=" + airport + "&begin=" + t1 + "&end=" + t2 + "");
 
@@ -43,11 +44,10 @@ class FlightService {
             //Tworze obiekt "node" z klasy JsonNode, dzieki czemu moge odczytac strukture Jsona
             JsonNode node = mapper.readTree(url);
 
-
-             depAirports= new ArrayList<>();
-             depDates= new ArrayList<>();
-             arrDates= new ArrayList<>();
-             callsigns= new ArrayList<>();
+            depAirports = new ArrayList<>();
+            depDates = new ArrayList<>();
+            arrDates = new ArrayList<>();
+            callsigns = new ArrayList<>();
 
             boolean flag = true;
             int i = 0;
@@ -84,7 +84,10 @@ class FlightService {
                 }
             }
 
-        
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
 
     }
 
@@ -119,6 +122,5 @@ class FlightService {
     public void setCallsigns(ArrayList<String> callsigns) {
         this.callsigns = callsigns;
     }
-    
-        
+
 }

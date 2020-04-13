@@ -1,6 +1,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 
     <head>
@@ -15,37 +17,43 @@
                     <input class="logoutBtn" type="submit" value="Logout" >
                 </form>
             </div>
-            
-               <div class="menu">
+
+            <div class="menu">
                 <form action="/menu" >
                     <input class="menuBtn" type="submit" value="Menu" >
                 </form>
             </div>
         </header>
 
+
+
         <main class="main">
             <article class="article_form">
-            <p class="text_check_flights">Check Flights</p>
-                <form action="/flight" method="POST">
+                <p class="text_check_flights">Check Flights</p>
+                <c:if test="${noFlight}">
+                    <div class="div_for_return_text">
+                        <p class="returned_text"><spring:message code="flightView.noFlight.text"></spring:message></p>
+                        </div>
+                </c:if>
+                <form:form modelAttribute="flight" action="/flight" method="POST">
                     <label class="labelText">Choose airport</label>
-                    <select "type="text" name ="airportname">
-                        <option value="EPKK">Krakow</option>
-                        <option value="EDDF">Frankfurt</option>
-                    </select>
+                    <form:select type="text" path ="airport">
+                        <form:option value="EPKK">Krakow</form:option>
+                        <form:option value="EDDF">Frankfurt</form:option>
+                    </form:select>
 
-                    <label class="labelText">Select date </label><br>
-                    <input type="date" name="date"><br>
+                    <label class="labelText">Select date <p class="error_msg"><form:errors path="date"/></p></label><br>
+                    <form:input type="date" path="date"/><br>
 
-                    <label class="labelText">From: </label>
-                    <input type="time" name="time1"><br>
+                    <label class="labelText">From: <p class="error_msg"><form:errors path="time1"/></p></label>
+                    <form:input type="time" path="time1"/><br>
 
-                    <label class="labelText">To:</label>
-                    <input type="time" name="time2">
+                    <label class="labelText">To: <p class="error_msg"><form:errors path="time2"/></p></label>
+                        <form:input type="time" path="time2"/>
 
                     <input type="submit" value="Check">
-                </form>
+                </form:form>
 
-             
 
             </article>
 
@@ -53,7 +61,6 @@
 
                 <article class="article_out">
                     <p class="text">Flights:</p>
-
 
                     <table>
                         <tr>
@@ -72,9 +79,8 @@
                                 <th>${variable}</th>
                                 <th>${depDate[status.index]}</th>
                                 <th>${arrDate[status.index]}</th>
-
-
                             </tr>
+
                         </c:forEach>
 
                     </table>

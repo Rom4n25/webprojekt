@@ -13,6 +13,7 @@ pl\romanek\webprojekt\shop\service\CustomerServiceImpl.class
 pl\romanek\webprojekt\crud\repository\InMemoryPersonRepository.class
 pl\romanek\webprojekt\shop\domain\Customer.class
 pl\romanek\webprojekt\sumThree\sumLogic3.class
+pl\romanek\webprojekt\flights\Flight.class
 pl\romanek\webprojekt\temperature\TempService.class
 pl\romanek\webprojekt\shop\repository\InMemoryCustomerRepository.class
 pl\romanek\webprojekt\shop\service\ProductServiceImpl.class

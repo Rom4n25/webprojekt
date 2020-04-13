@@ -1,7 +1,7 @@
 package pl.romanek.webprojekt;
 //paczka w jakiej znajduje sie klasa
 
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 //zaimportowana paczka, która zawiera gotowe klasy abstrakcyjne springa
 

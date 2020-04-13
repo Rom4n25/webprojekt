@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <html>
 
@@ -27,14 +29,28 @@
             <article class="article">
                 <p class="text_check_temperature">Check temperature</pl>
 
-                    <c:if test="${flag}">
+                    
+                    <c:if test="${flag_error_blank}">
                     <div class="div_for_return_text">
-                        <p class="returned_text">${temperatura}</p>   
+                        <p class="returned_text"><spring:message code="temperatureView.returned.error_text"></spring:message> </p>   
                     </div>
-                </c:if>
+                    </c:if>
+                    
+                    <c:if test="${flag_error_notfound}">
+                    <div class="div_for_return_text">
+                        <p class="returned_text"><spring:message code="temperatureView.returned.errorNotFound_text"></spring:message> </p>   
+                    </div>
+                    </c:if>
+                    
+                                      
+                    <c:if test="${flag_return}">
+                    <div class="div_for_return_text">
+                        <p class="returned_text">${city} - <spring:message code="temperatureView.returned.text"></spring:message> ${temperatura} [C]</p>   
+                    </div>
+                    </c:if>
 
                 <form action="/temperature" method="POST">
-                    <input type="text" name="city" placeholder="Type city..">
+                    <input type="text" name="city" placeholder="Type city.."/>
                     <input type="submit" value="Check">
                 </form>
 
