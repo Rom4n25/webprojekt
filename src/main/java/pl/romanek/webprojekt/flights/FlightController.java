@@ -17,26 +17,35 @@ public class FlightController {
     FlightService flightService;
 
     @GetMapping("/flight")
-    public String flightView(Model model, @ModelAttribute("flight") Flight flight) {
-
-        return "flightView";
-    }
+    public String flightView(Model model) {
+     
+        model.addAttribute(new Flight()); //do modelu zostaje przekazany @Bean o nazwie flight
+                                          //domyślnie Beany maja takie nazwy: klasa -  Flight - bean - flight
+        return "flightView";              //                                  klasa -  MyFlight - bean - myFlight
+                                          //na stronie flightView korzystam z Beana flight(formularz) więc muszę go dostarczyć bo inaczej będzie błąd
+    }                                     //w modelu form:form modelAttribute przekazuje wlasnie flight - tego Beana będzie używał formularz
+                                          //będzie również działać jak parametrze metody dam tylko Flight flight
+                                          //Jeżeli natomaist dodam w parametrze metody @ModelAttribute("newFlight") Flight flight to w flightView również ten Bean tak sie musi nazywać
+                                          //czyli form:form modelAttribute="newFlight"
 
     @PostMapping("/flight")
-    public String checkFlights(Model model, @Valid @ModelAttribute("flight") Flight flight, BindingResult result) throws IOException {
-
+    public String checkFlights(Model model, @Valid Flight flight, BindingResult result) throws IOException {
+            //nazwa obiektu Flight flight nie musi się wcale zgadzać z tym co mam na stronie flightView w modelAtribute
+            //@Bean z flightView zostaje poprostu włożony?(czy poprostu zostają przepisane wartości pól?) do metody checkFlights() jako paramter.
         if (result.hasErrors()) {
 
             return "flightView";
         }
 
         if (flightService.checkFligt(flight) == false) {
-            
+           
             Boolean error = true;
             model.addAttribute("noFlight",error);
             return "flightView";
 
         }
+        
+        
 
         Boolean flag = true;
         flightService.checkFligt(flight);

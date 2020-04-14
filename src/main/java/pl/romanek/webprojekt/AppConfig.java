@@ -19,6 +19,7 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.springframework.web.util.UrlPathHelper;
+import pl.romanek.webprojekt.shop.interceptor.TestInterceptor;
 
 @EnableWebMvc //mam zdefiniowany plik konfiguracyjny w root więc musze @EnableWebMvc
 @Configuration //określam, że jest to klasa konfiguracyjna
@@ -76,7 +77,7 @@ public class AppConfig implements WebMvcConfigurer {
         return slr;
     }
 
-    //przechwytywacz, ustalam pod jaka sciezka bedzie zmiana jezyka 
+    //tworzę (tak naprawdę on istnieje - dostarczony przez Springa) przechwytywacz, ustalam pod jaka sciezka bedzie zmiana jezyka 
     //?language=pl
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
@@ -86,10 +87,12 @@ public class AppConfig implements WebMvcConfigurer {
     }
 
     
-    //dodaje przechwytywacz do rejestru
+    //metoda poniżej dodaje przechwytywacze do rejestru
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());
+        registry.addInterceptor(new TestInterceptor()).addPathPatterns("/shop");
+        //dodaje utworzony przeczwytywacz TestInterceptor oraz ustalam ścieżkę, pod którą będzie działał
     }
 
     

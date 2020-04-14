@@ -35,7 +35,7 @@
                         <p class="returned_text"><spring:message code="flightView.noFlight.text"></spring:message></p>
                         </div>
                 </c:if>
-                <form:form modelAttribute="flight" action="/flight" method="POST">
+                <form:form modelAttribute="flight" method="POST">
                     <label class="labelText">Choose airport</label>
                     <form:select type="text" path ="airport">
                         <form:option value="EPKK">Krakow</form:option>

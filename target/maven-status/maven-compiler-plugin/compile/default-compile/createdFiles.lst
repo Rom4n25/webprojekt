@@ -1,4 +1,6 @@
 pl\romanek\webprojekt\shop\repository\CustomerRepository.class
+pl\romanek\webprojekt\shop\validator\ProductIdValidator.class
+pl\romanek\webprojekt\shop\validator\ProductId.class
 pl\romanek\webprojekt\shop\repository\ProductRepository.class
 pl\romanek\webprojekt\game\Weapon.class
 pl\romanek\webprojekt\DataBase.class
@@ -12,6 +14,7 @@ pl\romanek\webprojekt\currency\CurrencyService.class
 pl\romanek\webprojekt\shop\service\CustomerServiceImpl.class
 pl\romanek\webprojekt\crud\repository\InMemoryPersonRepository.class
 pl\romanek\webprojekt\shop\domain\Customer.class
+pl\romanek\webprojekt\shop\interceptor\TestInterceptor.class
 pl\romanek\webprojekt\sumThree\sumLogic3.class
 pl\romanek\webprojekt\flights\Flight.class
 pl\romanek\webprojekt\temperature\TempService.class

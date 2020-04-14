@@ -39,7 +39,7 @@ public class PersonController {
     
     
     @PostMapping("/add")
-    public String add1(@ModelAttribute("person") Person person) {
+    public String add1(Person person) { //dane przeslane z formularza są wiązane z tym Beanem Person
         
         personService.addPerson(person);
         

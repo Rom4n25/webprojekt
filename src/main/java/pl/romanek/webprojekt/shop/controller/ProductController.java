@@ -40,7 +40,6 @@ public class ProductController {
 
         model.addAttribute("products", productService.getAllProducts());
         model.addAttribute("category", "all");
-
         return "shopView";
 
     }

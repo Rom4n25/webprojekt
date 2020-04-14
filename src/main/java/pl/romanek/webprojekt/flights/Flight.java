@@ -4,7 +4,7 @@ package pl.romanek.webprojekt.flights;
 import javax.validation.constraints.NotBlank;
 
 public class Flight {
-    
+ 
     @NotBlank(message= "{NotBlank.Flight.validation}")
     private String date;
     @NotBlank(message= "{NotBlank.Flight.validation}")
