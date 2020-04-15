@@ -51,7 +51,7 @@
 
                     <p class="text">Price</p>
 
-                    <form action="/shop/price">
+                    <form action="/shop/price" method="POST">
 
                         <input type="text"  name="low" placeholder="Type lowest price">
                         <input type="text"  name="high" placeholder="Type highest price">

@@ -189,7 +189,7 @@ p{
 
     border-bottom-width: 0px;
     width:100px;
-    margin-top: 20px;
+    margin-top: 13px;
    
 }
 
@@ -241,7 +241,10 @@ input[class=logoutBtn] {
     width: 100%;
     background-color:rgba(255,255,255, 0.00);
     color: #4d4d4d;
-    padding:10px;
+    padding-left:8px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border: none;
     border-radius: 7px;
     cursor: pointer;
@@ -293,5 +296,17 @@ input[class=menuBtn] {
 
 input[class=menuBtn]:hover {
     background-color:rgba(255,255,255, 0.65);
+   
+}
+
+.error_msg{
+    
+    display:inline-block;
+    float:right;
+    margin:0;
+    padding: 0;
+    color: red;
+    text-align: right;
+    margin-bottom: 10px;
    
 }

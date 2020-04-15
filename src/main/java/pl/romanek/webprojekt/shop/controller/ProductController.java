@@ -58,7 +58,7 @@ public class ProductController {
         model.addAttribute("products", productService.getProductsByCategory(productCategory));
         model.addAttribute("category", productCategory);
 
-        return "shop";
+        return "shopView";
     }
 
     @PostMapping("/price")
@@ -87,7 +87,7 @@ public class ProductController {
         model.addAttribute("products", priceList);
         model.addAttribute("category", category);
 
-        return "shop";
+        return "shopView";
     }
 
     @GetMapping("/add")
