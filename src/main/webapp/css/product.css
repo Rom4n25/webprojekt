@@ -84,7 +84,7 @@ body {
     height:15px;
    
   }
-a:link, a:visited {
+.backBtn:link, .backBtn:visited {
   background-color: #4CAF50;
   color: white;
   padding: 14px 25px;
@@ -99,7 +99,7 @@ a:link, a:visited {
   cursor: pointer;
 }
 
-a:hover, a:active {
+.backBtn:hover, .backBtn:active {
   background-color: #45a049;
   padding: 14px 20px;
     margin: 4px 0;
@@ -108,7 +108,7 @@ a:hover, a:active {
     cursor: pointer;
 }
 
-a{
+.backBtn{
  
     padding-bottom: 30px;
     position: absolute;
@@ -148,8 +148,25 @@ input[name=logoutBtn]:hover {
    
 }
 
+.addCart{
+    
+   
+    
+}
 
+.cartBtn{
+    
+  
+    
+    
+}
 
+.newDiv{
+    
+    width: 100px;
+    margin:20px;
+
+}
 
 
 
