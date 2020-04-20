@@ -1,10 +1,12 @@
 pl\romanek\webprojekt\shop\repository\CustomerRepository.class
 pl\romanek\webprojekt\shop\validator\ProductIdValidator.class
 pl\romanek\webprojekt\game\Weapon.class
+pl\romanek\webprojekt\note\repository\InMemoryNoteRepository.class
 pl\romanek\webprojekt\DataBase.class
 pl\romanek\webprojekt\LogInController.class
 pl\romanek\webprojekt\shop\controller\CartController.class
 pl\romanek\webprojekt\shop\service\CustomerService.class
+pl\romanek\webprojekt\note\service\NoteServiceImpl.class
 pl\romanek\webprojekt\game\GameController.class
 pl\romanek\webprojekt\shop\domain\CartItem.class
 pl\romanek\webprojekt\shop\controller\CartRestController.class
@@ -20,6 +22,7 @@ pl\romanek\webprojekt\shop\service\ProductService.class
 pl\romanek\webprojekt\crud\domain\Person.class
 pl\romanek\webprojekt\shop\domain\Product.class
 pl\romanek\webprojekt\temperature\TempController.class
+pl\romanek\webprojekt\note\repository\NoteRepository.class
 pl\romanek\webprojekt\crud\service\PersonServiceImpl.class
 pl\romanek\webprojekt\shop\service\OrderService.class
 pl\romanek\webprojekt\crud\service\PersonService.class
@@ -27,12 +30,15 @@ pl\romanek\webprojekt\shop\validator\ProductId.class
 pl\romanek\webprojekt\shop\repository\ProductRepository.class
 pl\romanek\webprojekt\shop\repository\InMemoryProductRepository.class
 pl\romanek\webprojekt\sumThree\addThreeController.class
+pl\romanek\webprojekt\note\domain\NoteItem.class
 pl\romanek\webprojekt\currency\CurrencyController.class
 pl\romanek\webprojekt\currency\CurrencyService.class
 pl\romanek\webprojekt\shop\service\CustomerServiceImpl.class
 pl\romanek\webprojekt\crud\repository\InMemoryPersonRepository.class
 pl\romanek\webprojekt\shop\service\CartService.class
+pl\romanek\webprojekt\note\controller\NoteController.class
 pl\romanek\webprojekt\sumThree\sumLogic3.class
+pl\romanek\webprojekt\note\controller\NoteRestController.class
 pl\romanek\webprojekt\shop\repository\InMemoryCustomerRepository.class
 pl\romanek\webprojekt\shop\service\OrderServiceImpl.class
 pl\romanek\webprojekt\crud\controller\PersonController.class
@@ -40,8 +46,10 @@ pl\romanek\webprojekt\flights\FlightService.class
 pl\romanek\webprojekt\game\Vehicle.class
 pl\romanek\webprojekt\MyWebInitializer.class
 pl\romanek\webprojekt\shop\controller\CustomerController.class
+pl\romanek\webprojekt\note\domain\Note.class
 pl\romanek\webprojekt\shop\repository\InMemoryCartRepository.class
 pl\romanek\webprojekt\game\Hero.class
+pl\romanek\webprojekt\note\service\NoteService.class
 pl\romanek\webprojekt\AppConfig.class
 pl\romanek\webprojekt\shop\controller\ProductController.class
 pl\romanek\webprojekt\flights\FlightController.class

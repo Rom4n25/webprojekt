@@ -1,5 +1,5 @@
 #header {
-    
+
     opacity: 0.95;
     background-color:#45a049;
     background-size:100% 100%;
@@ -7,14 +7,14 @@
     border-bottom-width: 2px;
     border-bottom-color: #666666;
     border-bottom-style: solid;
- 
+
 }
 
 #main{
-  
+
     margin:0;
     padding:0;
-  
+
 }
 
 
@@ -39,34 +39,34 @@
 
 
 .product {
-  position: relative;
-  opacity: 0.90;
-  width: 600px;
-  height: 830px;
-  border-radius: 17px;
-  background-color: white;
-  padding: 20px;
-  margin-top:20px;
-  margin-left:20px;
-  box-sizing: border-box;
-  border: solid 2px #4d4d4d;
-  
+    position: relative;
+    opacity: 0.90;
+    width: 600px;
+    height: 830px;
+    border-radius: 17px;
+    background-color: white;
+    padding: 20px;
+    margin-top:20px;
+    margin-left:20px;
+    box-sizing: border-box;
+    border: solid 2px #4d4d4d;
+
 
 
 
 }
 
 #text{
-    
+
     color:#4d4d4d;
     font-family: "Lucida Console", Monaco, monospace;
     font-size: 25px;
     text-align: center;
-    
+
 }
 
 #returnText{
-    
+
     color:red;
     font-family: "Lucida Console", Monaco, monospace;
     font-size: 13px;
@@ -77,42 +77,41 @@ body {
     background-color: #d6d6d6;
     padding:0;
     margin:0;
-   }
-
-#div {
-    
-    height:15px;
-   
-  }
-.backBtn:link, .backBtn:visited {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  
-  padding: 14px 20px;
-  margin: 4px 0;
-  border: none;
-  border-radius: 7px;
-  cursor: pointer;
 }
 
-.backBtn:hover, .backBtn:active {
-  background-color: #45a049;
-  padding: 14px 20px;
-    margin: 4px 0;
+#div {
+
+    height:15px;
+
+}
+.backBtn:link, .backBtn:visited {
+    background-color: #4CAF50;
+
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+
+    padding: 14px 20px;
+    margin-right: 20px;
     border: none;
     border-radius: 7px;
     cursor: pointer;
 }
 
-.backBtn{
- 
-    padding-bottom: 30px;
-    position: absolute;
-    top: 760px;
+.backBtn:hover, .backBtn:active {
+    background-color: #45a049;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 14px 20px;
+    margin-right: 20px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
 }
 
 
@@ -120,8 +119,11 @@ body {
 .logout{
     margin:25px;
     float:right;
-    width:70px;
-    
+    width: 120px;
+
+    display: flex;
+    justify-content: space-between;
+
 }
 
 
@@ -137,36 +139,72 @@ input[name=logoutBtn] {
     border:solid;
     border-color: #666666;
     border-width: 1px;
-   
-    
-        
+
+
+
 }
 
 input[name=logoutBtn]:hover {
     background-color: #d6d6d6;
-    
-   
+
+
 }
 
-.addCart{
-    
-   
-    
+.addCart:link, .addCart:visited {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 14px 20px;
+    margin: 15px 0;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
 }
 
-.cartBtn{
-    
-  
-    
-    
+.addCart:hover, .addCart:active {
+    background-color: #45a049;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 14px 20px;
+    margin: 15px 0;
+    border: none;
+    border-radius: 7px;
 }
+
+
 
 .newDiv{
-    
-    width: 100px;
-    margin:20px;
+
 
 }
+input[name=cartBtn]:link, input[name=cartBtn]:visited {
+
+    margin:0;
+    width: 100%;
+    background-color: #f2f2f2;
+    color: #4d4d4d;
+    padding:10px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    border:solid;
+    border-color: #666666;
+    border-width: 1px;
+}
+
+input[name=cartBtn]:hover {
+    background-color: #d6d6d6;
+}
+
+
+
+
 
 
 

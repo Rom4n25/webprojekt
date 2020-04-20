@@ -53,6 +53,10 @@
                 <form action="/crud">
                     <input type="submit" value="<spring:message code="menuView.input.crud.button"></spring:message>">
                 </form>
+                
+                 <form action="/note">
+                    <input type="submit" value="<spring:message code="menuView.input.note.button"></spring:message>">
+                </form>
 
 
 
@@ -60,7 +64,7 @@
             <article class="article_callendar">
                 <p class="menu_text"><spring:message code="menuView.p.callendar.text"></spring:message></p>
 
-                <iframe src="https://calendar.google.com/calendar/b/1/embed?height=500&amp;wkst=2&amp;bgcolor=%234285F4&amp;ctz=Europe%2FWarsaw&amp;src=bXJvbWFuZWsxODAyQGdtYWlsLmNvbQ&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=cGwucG9saXNoI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23039BE5&amp;color=%2333B679&amp;color=%230B8043" style="border:solid 1px #777" width="400" height="340" frameborder="0" scrolling="no"></iframe>
+                <iframe src="https://calendar.google.com/calendar/b/1/embed?height=500&amp;wkst=2&amp;bgcolor=%234285F4&amp;ctz=Europe%2FWarsaw&amp;src=bXJvbWFuZWsxODAyQGdtYWlsLmNvbQ&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=cGwucG9saXNoI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23039BE5&amp;color=%2333B679&amp;color=%230B8043" style="border:solid 1px #777" width="400" height="390" frameborder="0" scrolling="no"></iframe>
 
             </article>
 

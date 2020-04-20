@@ -11,12 +11,15 @@
     <body>
         <header id="header">
             <div class="logout">
+                <form action="/cart" >
+                    <input class="logoutBtn" type="submit" value="Cart" >
+                </form>
                 <form action="/logout" >
                     <input class="logoutBtn" type="submit" value="Logout" >
                 </form>
             </div>
-            
-               <div class="menu">
+
+            <div class="menu">
                 <form action="/menu" >
                     <input class="menuBtn" type="submit" value="Menu" >
                 </form>

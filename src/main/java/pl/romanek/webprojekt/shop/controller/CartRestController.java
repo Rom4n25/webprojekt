@@ -3,22 +3,24 @@ package pl.romanek.webprojekt.shop.controller;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 import pl.romanek.webprojekt.shop.domain.Cart;
 import pl.romanek.webprojekt.shop.domain.CartItem;
 import pl.romanek.webprojekt.shop.domain.Product;
 import pl.romanek.webprojekt.shop.service.CartService;
 import pl.romanek.webprojekt.shop.service.ProductService;
 
-@Controller
-@RequestMapping(value = "rest/cart")
+@RestController
+@RequestMapping("rest/cart")
 public class CartRestController {
 
     @Autowired
@@ -27,53 +29,52 @@ public class CartRestController {
     @Autowired
     private ProductService productService;
 
-    @RequestMapping(method = RequestMethod.POST)
-    public @ResponseBody
-    Cart create(@RequestBody Cart cart) {
+    //Nie musze dodawać @ResponseBody bo mam @RestController
+    @PostMapping()
+    public Cart create(@RequestBody Cart cart) {
         return cartService.create(cart);
     }
 
-    @RequestMapping(value = "/{cartId}", method = RequestMethod.GET)
-    public @ResponseBody
-    Cart read(@PathVariable(value = "cartId") String cartId) {
-        return cartService.read(cartId);
+    @GetMapping("/{cartId}")
+    public Cart read(@PathVariable("cartId") String cartId) {
+        return cartService.read(cartId); //zwracam @ResponseBody w postaci JSONA
     }
 
-    @RequestMapping(value = "/{cartId}", method = RequestMethod.PUT)
+    @PutMapping("/{cartId}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void update(@PathVariable(value = "cartId") String cartId, @RequestBody Cart cart) {
+    public void update(@PathVariable("cartId") String cartId, @RequestBody Cart cart) {
         cartService.update(cartId, cart);
     }
 
-    @RequestMapping(value = "/{cartId}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{cartId}", method=RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable(value = "cartId") String cartId) {
+    public void delete(@PathVariable("cartId") String cartId) {
         cartService.delete(cartId);
     }
 
-    @RequestMapping(value = "/add/{productId}", method = RequestMethod.PUT)
+    @PutMapping("/add/{productId}") //tutaj trafia żądanie wywołane w kontrolerze controller.js z metody addToCart
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void addItem(@PathVariable String productId, HttpServletRequest request) {
-        String sessionId = request.getSession().getId();
-        Cart cart = cartService.read(sessionId);
+    public void addItem(@PathVariable("productId") String productId, HttpServletRequest request) { 
+        String sessionId = request.getSession().getId(); //zapisuje do Stringa Session ID
+        Cart cart = cartService.read(sessionId); //odczytuje z bazy obiekt cart na podstawie tego Session ID
 
-        if (cart == null) {
+        if (cart == null) { //jeżeli okaże się, że taki koszyk nie istnieje to go tworzę 
             cart = cartService.create(new Cart(sessionId));
         }
 
-        Product product = productService.getProductById(productId);
+        Product product = productService.getProductById(productId); //odczytuje z bazy produkt na podsatwie id 
 
-        if (product == null) {
+        if (product == null) {  //jeżeli nie ma takiego produktu to rzucam wyjątek
             throw new IllegalArgumentException(new Exception());
         }
 
-        cart.addCartItem(new CartItem(product));
-        cartService.update(cart.getCartId(), cart);
+        cart.addCartItem(new CartItem(product)); //do stworzonego koszyka dodaje nowy CartItem czyli produkt
+        cartService.update(cart.getCartId(), cart);//aktualizuje koszyk - lista koszykow jest HashMapem gdzie kluczem jest ID koszyka czyli SessionID a vaulue to koszyk
     }
 
-    @RequestMapping(value = "/remove/{productId}", method = RequestMethod.PUT)
+    @PutMapping("/remove/{productId}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void removeItem(@PathVariable String productId, HttpServletRequest request) {
+    public void removeItem(@PathVariable("productId") String productId, HttpServletRequest request) {
         String sessionId = request.getSession().getId();
         Cart cart = cartService.read(sessionId);
 

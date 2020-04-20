@@ -14,10 +14,19 @@
 
     <body>
         <header id="header">
+            
+          
+            
             <div class="logout">
+                 <form action="/cart" >
+                    <input name="logoutBtn" type="submit" value="Cart" >
+                </form>
                 <form action="/logout" >
                     <input name="logoutBtn" type="submit" value="Logout" >
                 </form>
+               
+                
+                
             </div>
         </header>
 
@@ -33,27 +42,27 @@
                     <p class="productDescription">Price: ${product.unitPrice} PLN</p>
                     <p class="productDescription">Liczba sztuk w magazynie: ${product.unitsInStock}</p>
                     <p class="productDescription">${product.description}</p>
-                    <a class="backBtn" href=" <spring:url value="/shop/" /> " >
+                   
+                   
+                    <div class="newDiv" ng-controller="cartCtrl">
+                         <a class="backBtn" href=" <spring:url value="/shop/" /> " >
                         Back
                     </a>
-
+                        
+                        <a href="#" class="addCart"  ng-click="addToCart('${product.productId}')"> <!-- gdy kliknę to zadziala z kontrollera metoda addToCart z parametrem productId -->
+                             Zamów teraz </a>
+                     
+                    </div>
                 </div>
 
 
 
 
-                <div class="newDiv" >
-                    <p ng-controller="cartCtrl">
-                        <a href="#" class="addCart"  ng-click="addToCart('${product.productId}')">
-                            <span></span> Zamów teraz </a>
-                        <a href="<spring:url value="/cart" />" class="cartBtn">
-                            <span></span> Koszyk
-                        </a>
-
-                    </p>
 
 
-                </div>
+
+
+
 
             </section>
         </main>
